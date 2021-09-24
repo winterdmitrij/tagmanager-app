@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Instance } from '../shared/model';
+import { NgForm } from '@angular/forms';
+
 import { ModelService } from '../shared/model.service';
-import {NgForm} from '@angular/forms';
+import { Instance } from '../shared/model';
 
 @Component({
   selector: 'app-instance',

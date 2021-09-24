@@ -1,1 +1,180 @@
-<p>taggroup works!</p>
+<!-- Tabelle Instances-->
+<hr>
+<div class="container">
+  <h1>{{title}}</h1>
+  <button (click)="onOpenModal2('add')" type="button" class="btn btn-primary" data-bs-toggle="modal"> <!-- (click)="onOpenModal2('add')" -->
+    Add Instance
+  </button>
+  <div class="containet" id="main-container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main-box no-header clearfix">
+          <div class="main-box-body clearfix">
+            <div class="table-responsive">
+              <table class="table user-list">
+                <thead>
+                  <tr>
+                    <th><span>tag group id</span></th>
+                    <th><span>tag group title</span></th>
+                    <th><span>topic</span></th>
+                    <th><span>help</span></th>
+                    <th>&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tagGroup of tagGroups">
+                    <td>
+                      <a href="#" class="user-link">{{tagGroup.tagGroupId}}</a>
+                    </td>
+                    <td>
+                      <span>{{tagGroup.tagGroupTitle}}</span>
+                    </td>
+                    <td>
+                      <span>{{tagGroup.topic}}</span>
+                    </td>
+                    <td>
+                      <span>{{tagGroup.help}}</span>
+                    </td>
+
+                    <!-- Schaltern: Edit, Delete -->
+                    <td style="width: 20%;">
+                      <!-- Lupe -->
+                      <a href="#" class="table-link text-warning">
+                        <span class="fa-stack">
+                          <i class="fa fa-square fa-stack-2x"></i>
+                          <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                      <!-- Bleistift -->
+                      <a class="table-link text-info"> <!-- (click)="onOpenModal(instance, 'edit')" -->
+                        <span class="fa-stack">
+                          <i class="fa fa-square fa-stack-2x"></i>
+                          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                      <!-- Mülleimer -->
+                      <a class="table-link danger"> <!-- (click)="onOpenModal(instance, 'delete')" -->
+                        <span class="fa-stack">
+                          <i class="fa fa-square fa-stack-2x"></i>
+                          <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </td>
+                  </tr>    
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Tag Group Modal -->
+  <div class="modal fade" id="addTagGroupModal" tabindex="-1" role="dialog" aria-labelledby="addTagGroupModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addTagGroupModalLabel">Add Tag Group</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddTagGroup(addForm)">
+            <div class="form-group">
+              <label for="tagGroupId">Id</label>
+              <input type="text" ngModel name="tagGroupId" class="form-control" id="tagGroupId" placeholder="Id" required>
+            </div>
+            <div class="form-group">
+              <label for="tagGroupTitle">Title</label>
+              <input type="text" ngModel name="tagGroupTitle" class="form-control" id="tagGroupTitle" placeholder="Title" required>
+            </div>
+            <div class="form-group">
+              <label for="topic">Topic</label>
+              <input type="text" ngModel name="topic" class="form-control" id="topic" placeholder="Topic" required>
+            </div>
+            <div class="form-group">
+              <label for="help">Help</label>
+              <input type="text" ngModel name="help" class="form-control" id="help" placeholder="Help" required>
+            </div>            
+
+            <div class="modal-footer">
+              <button type="button" id="add-taggroup-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Instance Modal -->
+  <!--
+  <div class="modal fade" id="updInstanceModal" tabindex="-1" role="dialog" aria-labelledby="updInstanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updInstanceModalLabel">Edit Instance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #updForm="ngForm">
+            <div class="form-group">
+              <label for="site"></label>
+              <label for="site"><h5> {{editInstance?.site}}</h5></label>
+              <input type="hidden" ngModel="{{editInstance?.site}}" name="site" class="form-control" id="site" placeholder="Site">
+            </div>
+            <div class="form-group">
+              <label for="ipAddress">IP-Address</label>
+              <input type="text" ngModel="{{editInstance?.ipAddress}}" name="ipAddress" class="form-control" id="ipAddress" placeholder="IP-Address">
+            </div>
+            <div class="form-group">
+              <label for="secret">Secret</label>
+              <input type="text" ngModel="{{editInstance?.secret}}" name="secret" class="form-control" id="secret" placeholder="Secret">
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" id="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button (click)="onUpdInstance(updForm.value)" data-dismiss="modal" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+
+  <!-- Delete Modal -->
+  <!--
+  <div class="modal fade" id="delInstanceModal" tabindex="-1" role="dialog" aria-labelledby="delInstanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="delInstanceModalLabel">Delete Instance</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete instance {{deleteInstance?.site}}</p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button (click)="onDelInstance(deleteInstance?.site)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<!-- Keine Instance gefunden -->
+<div *ngIf="tagGroups?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO TAG GROUPS!</h4>
+    <p>No Tag Groups were found.</p>
+  </div>
+</div>

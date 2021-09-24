@@ -17,7 +17,6 @@
                     <th><span>SITE</span></th>
                     <th><span>IP-ADDRESS</span></th>
                     <th><span>SECRET</span></th>
-                    <!--<th class="text-center"><span>Status</span></th>-->
                     <th>&nbsp;</th>
                   </tr>
                 </thead>
@@ -32,11 +31,6 @@
                     <td>
                       <span>{{instance?.secret}}</span>
                     </td>
-                    <!--
-                    <td class="text-center">
-                        <span class="label label-default">pending</span>
-                    </td>
-                    -->
 
                     <!-- Schaltern: Edit, Delete -->
                     <td style="width: 20%;">
@@ -48,14 +42,14 @@
                         </span>
                       </a>
                       <!-- Bleistift -->
-                      <a (click)="onOpenModal(instance, 'edit')" href="#" class="table-link text-info">
+                      <a (click)="onOpenModal(instance, 'edit')" class="table-link text-info">
                         <span class="fa-stack">
                           <i class="fa fa-square fa-stack-2x"></i>
                           <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                         </span>
                       </a>
                       <!-- Mülleimer -->
-                      <a (click)="onOpenModal(instance, 'delete')" href="#" class="table-link danger">
+                      <a (click)="onOpenModal(instance, 'delete')" class="table-link danger">
                         <span class="fa-stack">
                           <i class="fa fa-square fa-stack-2x"></i>
                           <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -163,5 +157,13 @@
           </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Keine Instance gefunden -->
+<div *ngIf="instances?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">NO INSTANCES!</h4>
+    <p>No Instances were found.</p>
   </div>
 </div>
